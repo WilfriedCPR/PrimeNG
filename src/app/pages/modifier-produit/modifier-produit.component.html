@@ -1,0 +1,43 @@
+<div class="card">
+  <h2>✏️ Modifier le Produit</h2>
+
+  <form [formGroup]="produitForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label>Nom du produit</label>
+      <input pInputText formControlName="nom" />
+    </div>
+
+    <div class="form-group">
+      <label>Prix (FCFA)</label>
+      <p-inputNumber formControlName="prix" [min]="1" [showButtons]="true"></p-inputNumber>
+    </div>
+
+    <div class="form-group">
+      <label>Description</label>
+      <input pInputText formControlName="description" />
+    </div>
+
+    <div class="form-group">
+      <label>Fournisseur (nom)</label>
+      <input pInputText formControlName="fournisseurNom" />
+    </div>
+
+    <div class="form-group">
+      <label>Catégories</label>
+      <div *ngFor="let cat of categoriesDisponibles">
+        <p-checkbox
+          [value]="cat.id"
+          (change)="onCheckboxChange(cat.id, $event)"
+          inputId="cat-{{cat.id}}"
+        ></p-checkbox>
+        <label for="cat-{{cat.id}}">{{ cat.nom }}</label>
+      </div>
+    </div>
+
+    <button pButton type="submit" label="Modifier" icon="pi pi-save"
+            [disabled]="produitForm.invalid || loading"></button>
+  </form>
+
+  <p *ngIf="loading">⏳ Modification en cours...</p>
+  <p *ngIf="successMessage">{{ successMessage }}</p>
+</div>

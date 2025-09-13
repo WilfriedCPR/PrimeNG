@@ -1,0 +1,41 @@
+<div class="card">
+  <h2>📦 Liste des Produits</h2>
+
+  <p-table [value]="produits" [paginator]="true" [rows]="10" responsiveLayout="scroll"
+           [loading]="produits.length === 0" [rowHover]="true" styleClass="p-datatable-striped">
+
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Nom</th>
+        <th>Prix</th>
+        <th>Description</th>
+        <th>Actions</th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-produit>
+      <tr>
+        <td>{{ produit.nom }}</td>
+        <td>{{ produit.prix }} FCFA</td>
+        <td>{{ produit.description || '-' }}</td>
+        <td>
+          <button pButton icon="pi pi-pencil" class="p-button-rounded p-button-info p-button-sm"
+                  [routerLink]="['/modifier', produit.id]"></button>
+          <button pButton icon="pi pi-trash" class="p-button-rounded p-button-danger p-button-sm"
+                  (click)="supprimer(produit.id!)"></button>
+        </td>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td colspan="4">Aucun produit trouvé.</td>
+      </tr>
+    </ng-template>
+  </p-table>
+
+  <div class="mt-2">
+    <button pButton label="➕ Ajouter un produit" icon="pi pi-plus" class="p-button-success"
+            routerLink="/ajouter"></button>
+  </div>
+</div>
