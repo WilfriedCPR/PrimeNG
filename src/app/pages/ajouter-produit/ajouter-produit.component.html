@@ -1,5 +1,5 @@
 <div class="card">
-  <h2>➕ Ajouter un Produit</h2>
+  <h2>Ajouter un Produit</h2>
 
   <form [formGroup]="produitForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
@@ -38,6 +38,6 @@
             [disabled]="produitForm.invalid || loading"></button>
   </form>
 
-  <p *ngIf="loading">⏳ Enregistrement en cours...</p>
+  <p *ngIf="loading">Enregistrement en cours...</p>
   <p *ngIf="successMessage">{{ successMessage }}</p>
 </div>
