@@ -58,7 +58,7 @@ export class ModifierProduitComponent implements OnInit {
           nom: produit.nom,
           prix: produit.prix,
           description: produit.description,
-          fournisseurNom: 'Fournisseur A', // à adapter si tu récupères le nom
+          fournisseurNom: 'Fournisseur A',
           categorieIds: produit.categories?.map(c => c.id)
         });
       });
@@ -84,7 +84,7 @@ export class ModifierProduitComponent implements OnInit {
       nom: this.produitForm.value.nom,
       prix: this.produitForm.value.prix,
       description: this.produitForm.value.description,
-      fournisseurId: 0, // à remplacer si tu as l’ID réel
+      fournisseurId: 0,
       categories: this.produitForm.value.categorieIds.map((id: number) => ({ id }))
     };
 
@@ -92,11 +92,11 @@ export class ModifierProduitComponent implements OnInit {
 
     this.produitService.modifierProduit(this.produitId, produit).subscribe({
       next: () => {
-        this.successMessage = '✅ Produit modifié avec succès !';
+        this.successMessage = 'Produit modifié avec succès !';
         this.loading = false;
       },
       error: () => {
-        this.successMessage = '❌ Erreur lors de la modification.';
+        this.successMessage = 'Erreur lors de la modification.';
         this.loading = false;
       }
     });
