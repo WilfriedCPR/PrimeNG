@@ -63,7 +63,7 @@ export class AjouterProduitComponent {
       nom: this.produitForm.value.nom,
       prix: this.produitForm.value.prix,
       description: this.produitForm.value.description,
-      fournisseurId: 0, // à remplacer par un vrai ID si disponible
+      fournisseurId: 0,
       categories: this.produitForm.value.categorieIds.map((id: number) => ({ id }))
     };
 
