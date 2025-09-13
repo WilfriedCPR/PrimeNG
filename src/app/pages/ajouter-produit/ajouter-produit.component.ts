@@ -71,12 +71,12 @@ export class AjouterProduitComponent {
 
     this.produitService.ajouterProduit(produit).subscribe({
       next: () => {
-        this.successMessage = '✅ Produit ajouté avec succès !';
+        this.successMessage = 'Produit ajouté avec succès !';
         this.produitForm.reset();
         this.loading = false;
       },
       error: () => {
-        this.successMessage = '❌ Erreur lors de l’ajout.';
+        this.successMessage = 'Erreur lors de l’ajout.';
         this.loading = false;
       }
     });
